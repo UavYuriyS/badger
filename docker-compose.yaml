@@ -1,0 +1,25 @@
+services:
+  redis:
+    image: redis/redis-stack-server
+
+    volumes:
+      - redis:/data
+      - ./redis.conf:/redis-stack.conf
+
+    ports:
+       - "6379:6379"
+
+  badger:
+    build:
+      context: .
+
+
+    ports:
+      - "5050:5050"
+
+    environment:
+      DB_HOST: redis
+      API_KEY: "D83LF/FeVALQI5)},IK2eJ[QU)5~:E9iAe9£f£-Lbyuf88{85f"
+
+volumes:
+  redis:
